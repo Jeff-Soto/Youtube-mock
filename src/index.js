@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Search from './components/Search'
 import FeaturedVideo from './components/FeaturedVideo'
+import VideoList from './components/VideoList'
 import './index.css'
 const axios = require('axios');
 
@@ -18,10 +19,9 @@ class App extends Component{
 
   handleSubmit = (e) => {
     if (e.which !== 13) return;
-     // Make API request
 
      axios(this.state.baseURL + '/search?part=snippet&q=' + this.state.value + '&type=video&videoCaption=closedCaption&key=' + this.state.apiKey)
-     .then(response => this.setState({ videos: response.data.items, featuredVideoUrl: this.getVideoEmbedUrl(response.data.items[0]) }))
+     .then(response => this.setState({ videos: response.data.items, featuredVideoUrl: this.getVideoEmbedUrl(response.data.items[0]), value: '' }))
      .catch(err => console.log("Error making Req, ", err))
   }
 
@@ -31,6 +31,15 @@ class App extends Component{
 
   getVideoEmbedUrl = (video) => {
     return 'https://youtube.com/embed/' + video.id.videoId + '?autoplay=1'
+  }
+
+  updateVideoEmbedUrl = (e) => {
+    let tempVidObj = {
+      id: {
+        videoId: e.target.parentNode.dataset.video
+      }
+    }
+    this.setState({ featuredVideoUrl: this.getVideoEmbedUrl(tempVidObj)})
   }
 
   render(){
@@ -55,6 +64,7 @@ class App extends Component{
           </div>
           <div className="col-sm-4">
             <h4>Related Videos</h4>
+            <VideoList videos={this.state.videos} updateVideoEmbedUrl={this.updateVideoEmbedUrl}/>
           </div>
         </div>
       </div>

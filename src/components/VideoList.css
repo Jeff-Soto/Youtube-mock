@@ -1,0 +1,23 @@
+.video-list-container{
+  border: 1px solid #333;
+  min-height: 450px;
+}
+
+.video-item{
+  box-shadow: 1px 1px 1px #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.video-item p, .video-item h6{
+  pointer-events: none;
+}
+
+.video-item img {
+  width: 100%;
+}
+
+.img-container{
+  padding-right: 10px !important;
+}
