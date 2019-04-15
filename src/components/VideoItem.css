@@ -1,0 +1,19 @@
+.video-item{
+  box-shadow: 0px 1px 1px 1px #ccc;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px;
+  width: 100%;
+}
+
+.video-item p, .video-item h6{
+  pointer-events: none;
+}
+
+.video-item img {
+  width: 100%;
+}
+
+.img-container{
+  padding-right: 10px !important;
+}

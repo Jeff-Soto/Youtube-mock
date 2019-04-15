@@ -44,7 +44,7 @@ class App extends Component{
 
   render(){
     return (
-      <div className="container app">
+      <div className="container-fluid app">
         <div className="row">
           <div className="col-sm-12">
             <div className="jumbotron">
@@ -58,11 +58,11 @@ class App extends Component{
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-8">
+          <div className="col-md-8">
             <h4>Featured Video</h4>
             <FeaturedVideo featuredVideoUrl={this.state.featuredVideoUrl}/>
           </div>
-          <div className="col-sm-4">
+          <div className="col-md-4">
             <h4>Related Videos</h4>
             <VideoList videos={this.state.videos} updateVideoEmbedUrl={this.updateVideoEmbedUrl}/>
           </div>
